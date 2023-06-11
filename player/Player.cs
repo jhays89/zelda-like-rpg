@@ -28,7 +28,7 @@ public partial class Player : CharacterBody2D
 
 	private void UpdateAnimation()
 	{
-		if (Velocity.Length() == 0)
+		if (Velocity.Length() == 0 && _animationPlayer.IsPlaying())
 			_animationPlayer.Stop();
 		else
 		{
