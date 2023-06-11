@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk7pcrmjyrfgt"]
+[gd_scene load_steps=9 format=3 uid="uid://dk7pcrmjyrfgt"]
 
 [ext_resource type="PackedScene" uid="uid://deih12uuttfw0" path="res://player/Player.tscn" id="1_3km2u"]
 [ext_resource type="Texture2D" uid="uid://by0xm7r4pxugm" path="res://art/TilesetFloor.png" id="2_8swwv"]
 [ext_resource type="Texture2D" uid="uid://b486c2qgieh8a" path="res://art/TilesetNature.png" id="3_opvjk"]
+[ext_resource type="Texture2D" uid="uid://5i1wx6sw3l82" path="res://art/AnimatedFlower.png" id="4_1j0bm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcije"]
 texture = ExtResource("2_8swwv")
@@ -470,6 +471,7 @@ texture = ExtResource("3_opvjk")
 0:0/size_in_atlas = Vector2i(2, 2)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(-8, 8)
+0:0/0/y_sort_origin = 7
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -735,17 +737,27 @@ texture = ExtResource("3_opvjk")
 10:20/0 = 0
 11:20/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cdhh8"]
+texture = ExtResource("4_1j0bm")
+0:0/animation_frame_0/duration = 0.4
+0:0/animation_frame_1/duration = 0.4
+0:0/animation_frame_2/duration = 0.4
+0:0/animation_frame_3/duration = 0.4
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_kj5t2"]
 sources/0 = SubResource("TileSetAtlasSource_hcije")
 sources/1 = SubResource("TileSetAtlasSource_lg7u0")
+sources/3 = SubResource("TileSetAtlasSource_cdhh8")
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_3km2u")]
-z_index = 1
 position = Vector2(110, 63)
 
 [node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_kj5t2")
 format = 2
 layer_0/name = "Ground"
@@ -756,11 +768,11 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(393225, 1, 11, 327681, 1, 11, 458763, 1, 11, 65538, 262145, 11, 65539, 262145, 11, 65540, 262145, 11, 65541, 262145, 11, 131076, 262145, 11, 131075, 262145, 11, 131077, 262145, 11, 131074, 262145, 11)
+layer_1/tile_data = PackedInt32Array(393225, 1, 11, 327681, 1, 11, 458763, 1, 11, 65538, 262145, 11, 65539, 262145, 11, 65540, 262145, 11, 65541, 262145, 11, 131076, 262145, 11, 131075, 262145, 11, 131077, 262145, 11, 131074, 262145, 11, 196610, 3, 0, 393223, 3, 0, 131085, 3, 0)
 layer_2/name = "Trees"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
+layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
-layer_2/z_index = 0
+layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(196618, 1, 0, 393219, 1, 0, 327691, 1, 0)
